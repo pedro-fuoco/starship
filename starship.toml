@@ -1,158 +1,89 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+palette = "catppuccin_mocha"
+
 format = """\
-[╭╴](fg:arrow)\
 $hostname:$username\
-$os\
-$git_branch\
 (\
     at \
     $directory\
 )\
+$git_branch\
+$git_status\
+$git_commit\
+$git_state\
+$git_metrics\
 $cmd_duration\
 """
-# Add the modules you need
 
-# Disable the blank line at the start of the prompt
 add_newline = false
 
-
-palette = "normal"
-
 [hostname]
+style = "bold sky"
 format = '[$hostname](fg:$style)'
 ssh_only=false
 
-[palettes.normal]
-arrow = "#333533"
-os = "#16f4d0"
-os_admin = "#e4ff1a"
-directory = "#9ffff5"
-time = "#bdfffd"
-node = "#a5e6ba"
-git = "#f17f29"
-git_status = "#DFEBED"
-python = "#edf67d"
-conda = "#70e000"
-java = "#F86279"
-rust = "#ffdac6"
-clang = "#caf0f8"
-duration = "#ce4257"
-text_color = "#EDF2F4"
-text_light = "#26272A"
-
-# I disabled some modules (Rust, Java...) since some things aren't installed in my machine, enable them if you need.
-
 [username]
-style_user = 'bold os'
-style_root = 'bold os_admin'
+style_user = "bold sapphire"
 format = '[$user](fg:$style) '
 disabled = false
 show_always = true
 
-[os]
-format = "on [($name)]($style) "
-style = "bold blue"
-disabled = true
-
-[os.symbols]
-Alpine = " "
-Arch = " "
-Debian = " "
-EndeavourOS = " "
-Fedora = " "
-Linux = " "
-Macos = " "
-Manjaro = " "
-Mint = " "
-NixOS = " "
-openSUSE = " "
-Pop = " "
-SUSE = " "
-Ubuntu = " "
-Windows = " "
-
-[character]
-success_symbol = "[](fg:arrow)"
-error_symbol = "[](fg:red)"
-
 [directory]
-format = "[$path](bold $style)[$read_only]($read_only_style) "
-truncation_length = 2
-style = "fg:directory"
-read_only_style = "fg:directory"
-before_repo_root_style = "fg:directory"
+style = "bold lavender"
+truncation_length = 4
 truncation_symbol = "…/"
 truncate_to_repo = true
 read_only ="  "
 
-[time]
-disabled = true
-format = "at [ $time]($style)"
-time_format = "%H:%M"
-style = "bold fg:time"
-
 [cmd_duration]
+style = "bold yellow"
 format = "took [ $duration]($style) "
-style = "bold fg:duration"
-min_time = 500
 
 [git_branch]
 format = "via [$symbol$branch]($style) "
-style = "bold fg:git"
+style = "bold mauve"
 symbol = " "
 
 [git_status]
-format = '[ $all_status$ahead_behind ]($style)'
-style = "fg:text_color bg:git"
-disabled = true
+style = "bold flamingo"
 
-[docker_context]
-disabled=true
-symbol = " "
+[git_commit]
+format = '[\(#$hash$tag\)]($style) '
+style = "bold teal"
+tag_disabled = false
+only_detached = true
+tag_symbol = ' @'
 
-[package]
-disabled=true
-
-[fill]
-symbol = " "
-
-[nodejs]
-format = "[ $symbol$version ]($style)"
-style = "bg:node fg:text_light"
-symbol = " "
-version_format = "${raw}"
-disabled=false
-
-[python]
-disabled=false
-format = '[ ${symbol}${pyenv_prefix}(${version})( \($virtualenv\)) ]($style)'
-symbol = " "
-version_format = "${raw}"
-style = "bg:python fg:text_light"
-
-[conda]
-format = "[ $symbol$environment ]($style)"
-style = "bg:conda fg:text_light"
-ignore_base = false
+[git_metrics]
+added_style = 'bold teal'
+deleted_style = 'bold flamingo'
 disabled = false
-symbol = " "
 
-[java]
-format = "[ $symbol$version ]($style)"
-style = "bg:java fg:text_light"
-version_format = "${raw}"
-symbol = " "
-disabled = true
-
-[c]
-format = "[ $symbol($version(-$name)) ]($style)"
-style = "bg:clang fg:text_light"
-symbol = " "
-version_format = "${raw}"
-disabled=true
-
-[rust]
-format ="[ $symbol$version ]($style)"
-style = "bg:rust fg:text_light"
-symbol = " "
-version_format = "${raw}"
-disabled=true
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
